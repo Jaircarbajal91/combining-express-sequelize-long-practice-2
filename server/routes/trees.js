@@ -84,6 +84,14 @@ router.get('/:id', async (req, res, next) => {
  */
 router.post('/', async (req, res, next) => {
     try {
+        let { tree, location, heightFt, groundCircumferenceFt } = req.body;
+
+        const newTree = await Tree.create({
+            tree,
+            location,
+            heightFt,
+            groundCircumferenceFt
+        });
         res.json({
             status: "success",
             message: "Successfully created new tree",
